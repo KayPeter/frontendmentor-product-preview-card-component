@@ -1,0 +1,40 @@
+// COLORS
+$color-cream: hsl(30, 38%, 92%);
+$color-dark-cyan: hsl(158, 36%, 37%);
+$color-very-dark-blue: hsl(212, 21%, 14%);
+$color-very-grayish-blue: hsl(228, 12%, 48%);
+$color-white: hsl(0, 0%, 100%);
+
+// FONT FAMILIES
+$montserrat: 'Montserrat';
+$fraunces: 'Fraunces';
+
+// FONT SIZE
+$default-font-size: 1.4rem; // 14px
+
+// FONT WEIGHTS
+$medium: 500;
+$bold: 700;
+
+// BREAKPOINTS
+$bkp-desktop: 144rem; // 1440px
+$bkp-mobile: 37.5rem; // 375px
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html {
+    font-size: 62.5%;
+}
+body {
+    background-color: $color-cream;
+    font-family: $montserrat, sans-serif;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 100vh;
+  }
