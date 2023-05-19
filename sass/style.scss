@@ -10,31 +10,110 @@ $montserrat: 'Montserrat';
 $fraunces: 'Fraunces';
 
 // FONT SIZE
-$default-font-size: 1.4rem; // 14px
+$font-size-default: 1.4rem; // 14px
 
 // FONT WEIGHTS
-$medium: 500;
-$bold: 700;
+$font-weight-medium: 500;
+$font-weight-bold: 700;
 
 // BREAKPOINTS
-$bkp-desktop: 144rem; // 1440px
-$bkp-mobile: 37.5rem; // 375px
+$bkp-desktop: 144em; // 1440px
+$bkp-mobile: 37.5em; // 375px
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
 html {
     font-size: 62.5%;
 }
+
 body {
     background-color: $color-cream;
-    font-family: $montserrat, sans-serif;
+    font-size: $font-size-default;
+    font-weight: $font-weight-medium;
+    font-family: $montserrat, $fraunces, sans-serif;
+    color: $color-very-grayish-blue;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.product {
+    max-width: 35rem;
+    background-color: $color-white;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.product-img {
+    width: 100%;
+}
+
+.product-details {
+    margin: 2rem;
 
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-width: 100vh;
-  }
+    gap: 1.5rem;
+
+    .product-category {
+        text-transform: uppercase;
+        letter-spacing: 0.2rem;
+    }
+
+    .product-name {
+        font-family: $fraunces;
+        font-size: 3rem;
+        font-weight: $font-weight-bold;
+        color: $color-very-dark-blue;
+        line-height: 1;
+    }
+
+    .product-description {
+        letter-spacing: 0.035rem;
+        line-height: 1.5;
+    }
+
+    .price {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+
+        .discount-price {
+            font-family: $fraunces;
+            font-size: 3rem;
+            font-weight: $font-weight-bold;
+            color: $color-dark-cyan;
+        }
+
+        .former-price {
+            text-decoration: line-through;
+        }
+    }
+
+    .cart-button {
+        padding: 1.5rem;
+        font-family: $montserrat;
+        color: $color-white;
+        background-color: $color-dark-cyan;
+        border: none;
+        border-radius: 0.7rem;
+        
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        
+        &:hover {
+            background-color: darken($color: $color-dark-cyan, $amount: 5);
+        }
+        &:active {
+            background-color: darken($color: $color-dark-cyan, $amount: 10);
+        }
+    }
+}
