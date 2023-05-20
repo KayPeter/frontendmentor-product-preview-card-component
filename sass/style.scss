@@ -11,10 +11,15 @@ $fraunces: 'Fraunces';
 
 // FONT SIZE
 $font-size-default: 1.4rem; // 14px
+$font-size-heading: 3rem; // 30px
 
 // FONT WEIGHTS
 $font-weight-medium: 500;
 $font-weight-bold: 700;
+
+// LINE HEIGHT
+$line-height-default: 1.5;
+$line-height-heading: 1;
 
 // BREAKPOINTS
 $bkp-desktop: 144em; // 1440px
@@ -27,15 +32,27 @@ $bkp-mobile: 37.5em; // 375px
 }
 
 html {
+    // Sets it to 10px relative to the user's browser setting
     font-size: 62.5%;
 }
 
+@mixin font-properties($font-size:$font-size-default, $font-weight:$font-weight-medium, $font-family:($montserrat, sans-serif), $color:$color-very-grayish-blue, $line-height: $line-height-default) {
+    font-size: $font-size;
+    font-weight: $font-weight;
+    font-family: $font-family;
+    color: $color;
+    line-height: $line-height;
+}
+
+
+// @media (max-width: 144em) {
+//     body {
+//         background-color: red;
+//     }
+// }
 body {
     background-color: $color-cream;
-    font-size: $font-size-default;
-    font-weight: $font-weight-medium;
-    font-family: $montserrat, $fraunces, sans-serif;
-    color: $color-very-grayish-blue;
+    @include font-properties;
 
     display: flex;
     align-items: center;
@@ -44,7 +61,6 @@ body {
 }
 
 .product {
-    max-width: 35rem;
     background-color: $color-white;
     border-radius: 1rem;
     overflow: hidden;
@@ -67,11 +83,15 @@ body {
     }
 
     .product-name {
-        font-family: $fraunces;
-        font-size: 3rem;
-        font-weight: $font-weight-bold;
-        color: $color-very-dark-blue;
-        line-height: 1;
+        // font-size: $font-size-heading;
+        // font-weight: $font-weight-bold;
+        // font-family: $fraunces;
+        // color: $color-very-dark-blue;
+        @include font-properties($font-size-heading,
+            $font-weight-bold,
+            $fraunces,
+            $color-very-dark-blue,
+            $line-height-heading);
     }
 
     .product-description {
@@ -103,17 +123,53 @@ body {
         background-color: $color-dark-cyan;
         border: none;
         border-radius: 0.7rem;
-        
+        cursor: pointer;
+
         display: flex;
         justify-content: center;
         align-items: center;
         gap: 1rem;
-        
+
         &:hover {
             background-color: darken($color: $color-dark-cyan, $amount: 5);
         }
+
         &:active {
             background-color: darken($color: $color-dark-cyan, $amount: 10);
         }
+    }
+}
+
+@media (min-width: 200px) {
+    .product {
+        max-width: 35rem;
+
+        display: flex;
+        flex-direction: column;
+    }
+    .product-img {
+        content:url("../images/image-product-mobile.jpg");
+    }
+}
+
+@media (min-width: 700px) {
+    .product {
+        max-width: 60rem;
+
+        display: flex;
+        flex-direction: row;
+    }
+    .image-preview {
+        flex: 1;
+    }
+    .product-img {
+        // object-fit: cover;
+        content:url("../images/image-product-desktop.jpg");
+    }
+    .product-details {
+        margin: 0;
+        padding: 2rem 3rem;
+        flex: 1;
+        justify-content: space-between;
     }
 }
