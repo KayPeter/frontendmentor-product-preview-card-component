@@ -27,8 +27,7 @@ body {
   flex-direction: column; }
 
 .product-img {
-  width: 100%;
-  content: url("../images/image-product-mobile.jpg"); }
+  width: 100%; }
 
 .product-details {
   margin: 2rem;
@@ -80,14 +79,17 @@ body {
     max-width: 60rem;
     display: flex;
     flex-direction: row; }
+    .product picture {
+      flex: 1; }
+    .product > div {
+      flex: 1; }
     .product .product-img {
-      width: 50%;
-      flex: 1;
-      content: url("../images/image-product-desktop.jpg"); }
+      height: 100%;
+      object-fit: cover; }
     .product .product-details {
       margin: 0;
-      padding: 3rem;
-      flex: 1;
-      justify-content: space-between; }
+      height: 100%;
+      justify-content: space-between;
+      padding: 3rem; }
     .product .product-name {
       letter-spacing: 0.1rem; } }
